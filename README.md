@@ -19,7 +19,9 @@
 - **file**: 基于文件系统的 stream 实现
 
 > memory 实现要求 input binding 和 out binding 在同一进程   
-> file 实现保存的文件名为 <destination>.stream, input 和 out 必须一致
+> file 实现保存的文件名为 <destination>.stream, input 和 out 必须一致   
+   
+**注意:** file 实现在高并发时可能出现丢失消息的，不应该被用于生产环境，仅供开发时使用
 
 # Quick Start
 
@@ -95,7 +97,6 @@ spring:
 spring:
   cloud:
     stream:
-      bindings:
       file:
         default:
           folder: '~/stream-files'
