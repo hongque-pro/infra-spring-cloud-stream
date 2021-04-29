@@ -3,7 +3,7 @@
 使用内存队列作为中间件 的 spring cloud stream 标准实现.
 
 ![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)
-![Maven Central](https://img.shields.io/maven-central/v/com.labijie.infra/spring-cloud-stream-core.svg?color=orange)
+![Maven Central](https://img.shields.io/maven-central/v/com.labijie.infra/spring-cloud-stream-binder-core.svg?color=orange)
 
 
 ## 为什么需要这个项目，应用场景是什么？
