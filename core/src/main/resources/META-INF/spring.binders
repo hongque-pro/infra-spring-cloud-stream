@@ -1,0 +1,2 @@
+memory:com.labijie.infra.stream.memory.configuration.MemoryBinderAutoConfiguration
+file:com.labijie.infra.stream.file.configuration.FileBinderAutoConfiguration

@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        test-in-0:
+          destination: 'test'
+        test-out-0:
+          destination: 'test'
+      default-binder: file
+      file:
+        default:
+          folder: '~/stream-files'
+      memory:
+        default:
+          queue-size: 2048
+          worker-pool-size: 1
+
+

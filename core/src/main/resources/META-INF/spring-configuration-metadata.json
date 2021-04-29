@@ -1,0 +1,29 @@
+{
+  "group": [
+    {
+      "name": "spring.cloud.stream.memory.default",
+      "type": "com.labijie.infra.stream.memory.configuration.MemoryBinderProperties"
+    },
+    {
+      "name": "spring.cloud.stream.file.default",
+      "type": "com.labijie.infra.stream.file.configuration.FileBinderProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.cloud.stream.memory.default.worker-pool-size",
+      "type": "java.lang.Integer",
+      "defaultValue": -1
+    },
+    {
+      "name": "spring.cloud.stream.memory.default.queue-size",
+      "type": "java.lang.Integer",
+      "defaultValue": 2048
+    },
+
+    {
+      "name": "spring.cloud.stream.file.default.folder",
+      "type": "java.lang.String"
+    }
+  ]
+}
