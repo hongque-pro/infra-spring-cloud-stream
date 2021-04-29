@@ -207,6 +207,6 @@ nexusStaging {
     def p =getPropertyOrCmdArgs(project, "PUB_PWD", "p")
     username = u
     password = p
-    packageGroup = "com.labijie"
+    packageGroup = "com.labijie.infra"
 }
 
