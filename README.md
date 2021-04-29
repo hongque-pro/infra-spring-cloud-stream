@@ -1,6 +1,6 @@
-# Spring Cloud Stream Binder Memory
+# Infra Spring Cloud Stream Binder (for development)
 
-使用内存队列作为中间件 的 spring cloud stream 标准实现.
+使用内存队列、文件作为中间件 的 spring cloud stream 标准实现.
 
 ![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)
 ![Maven Central](https://img.shields.io/maven-central/v/com.labijie.infra/spring-cloud-stream-binder-core.svg?color=orange)
@@ -21,7 +21,7 @@
 > memory 实现要求 input binding 和 out binding 在同一进程   
 > file 实现保存的文件名为 <destination>.stream, input 和 out 必须一致   
    
-**注意:** file 实现在高并发时可能出现丢失消息的，不应该被用于生产环境，仅供开发时使用
+**注意:** file 实现在高并发时可能出现丢失消息的情况，不应该被用于生产环境，仅供开发时使用
 
 # Quick Start
 
