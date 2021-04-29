@@ -13,7 +13,7 @@ buildscript {
         commons_io_version='2.8.0'
 
         maven_repo= System.getenv("MAVEN_PROXY")
-        nexus_staging_version = '0.22.0'
+        publishing_plugin_version = '1.1.0'
 
 
     }
@@ -32,9 +32,9 @@ plugins {
     id "org.springframework.boot" version "$spring_boot_version" apply false
     id "org.jetbrains.kotlin.jvm" version "$kotlin_version" apply false
     id "io.spring.dependency-management" version "$spring_dep_mgn_version" apply false
-    id "io.codearte.nexus-staging" version "$nexus_staging_version"
+    id "io.github.gradle-nexus.publish-plugin" version "$publishing_plugin_version" apply false
 }
-apply plugin: 'io.codearte.nexus-staging'
+apply plugin: 'io.github.gradle-nexus.publish-plugin'
 
 static Boolean  isNotNullOrBlank(Object s){
     return !(s == null || s.toString().trim().length() == 0)
@@ -202,11 +202,14 @@ subprojects {
     }
 }
 
-nexusStaging {
-    def u = getPropertyOrCmdArgs(project, "PUB_USER", "u")
-    def p =getPropertyOrCmdArgs(project, "PUB_PWD", "p")
-    username = u
-    password = p
-    packageGroup = "com.labijie.infra"
+nexusPublishing {
+    repositories {
+        sonatype {
+            def u = getPropertyOrCmdArgs(project, "PUB_USER", "u")
+            def p =getPropertyOrCmdArgs(project, "PUB_PWD", "p")
+            username = u
+            password = p
+        }
+    }
 }
 
