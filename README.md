@@ -101,7 +101,7 @@ spring:
         default:
           folder: '~/stream-files'
       memory:
-        binder:
+        default:
           queue-size: 2048
           worker-pool-size: 1
 ```
