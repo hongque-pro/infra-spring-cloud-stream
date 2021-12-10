@@ -39,4 +39,4 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
-test.stream
+/.spring-cloud-stream/

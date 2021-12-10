@@ -1,5 +1,6 @@
 package com.labijie.infra.stream.file
 
+import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.RandomAccessFile
@@ -16,12 +17,22 @@ import java.util.concurrent.ConcurrentHashMap
 internal object StreamFileUtils {
     private val fileSync = ConcurrentHashMap<String, Any>()
 
-    fun getDestinationFile(folder: String, destination: String): String {
-        val fileName = destination.toLowerCase() + ".stream"
+    private val invalidSeparator
+        get() = if (File.separator == "\\") "/" else "\\"
 
-        val f = folder.trimEnd(File.pathSeparatorChar)
-        if(f.isNotBlank()) {
-            return "$f${File.pathSeparator}$fileName"
+    val defaultFolder: String
+        get() {
+            val userDir = System.getProperty("user.home")
+            return File(userDir, ".spring-cloud-stream").absolutePath
+        }
+
+    fun getDestinationFile(folder: String, destination: String): String {
+        val dir = folder.ifBlank { defaultFolder }
+        val fileName = destination.lowercase() + ".stream"
+
+        val f = dir.replace(invalidSeparator, File.separator).trimEnd(File.separatorChar)
+        if (f.isNotBlank()) {
+            return "$f${File.separator}$fileName"
         }
         return fileName
     }
@@ -34,13 +45,15 @@ internal object StreamFileUtils {
                     val lock = it.channel.lock(0L, Long.MAX_VALUE, true)
                     try {
                         it.setLength(0)
-                    }finally {
+                    } finally {
                         lock.release()
                     }
                 }
             }
         } catch (_: FileNotFoundException) {
-            File(file).createNewFile()
+            val f = File(file)
+            FileUtils.createParentDirectories(f)
+            f.createNewFile()
             return truncateFile(file)
         }
     }

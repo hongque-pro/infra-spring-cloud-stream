@@ -7,9 +7,6 @@ spring:
         test-out-0:
           destination: 'test'
       default-binder: file
-      file:
-        default:
-          folder: '~/stream-files'
       memory:
         default:
           queue-size: 2048

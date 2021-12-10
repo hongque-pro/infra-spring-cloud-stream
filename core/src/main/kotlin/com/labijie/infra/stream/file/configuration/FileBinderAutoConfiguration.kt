@@ -2,12 +2,14 @@ package com.labijie.infra.stream.file.configuration
 
 import com.labijie.infra.stream.file.FileMessageChannelBinder
 import com.labijie.infra.stream.file.FileProvisioningProvider
+import com.labijie.infra.stream.file.StreamFileUtils
 import com.labijie.infra.stream.file.configuration.FileBinderProperties.Companion.ConfigKey
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import java.io.File
 
 /**
  *
@@ -32,8 +34,7 @@ class FileBinderAutoConfiguration {
     ): FileMessageChannelBinder {
 
         if(fileBinderProperties.folder.isBlank()){
-            val dir = System.getProperty("user.dir");
-            logger.warn("The value of '$ConfigKey.folder' is not specified, and the '$dir' is used as the stream file directory")
+            logger.warn("The value of '$ConfigKey.folder' is not specified, and the '${StreamFileUtils.defaultFolder}' is used as the stream file directory")
         }
 
         val provisioningProvider = FileProvisioningProvider()
