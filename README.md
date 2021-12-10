@@ -108,11 +108,11 @@ spring:
 
 说明：
 
-|配置         | 默认值           | 说明  |
-| ------------- |:-------------:| -----:|
-|spring.cloud.stream.memory.default.worker-pool-size| -1 | 工作线程池大小，当小于 0 时使用 CPU 核心数 1 半 | 
-|spring.cloud.stream.memory.default.queue-size| 2048 | 阻塞队列大小，当队列满了以后将丢弃最早的消息 | 
-|spring.cloud.stream.file.default.folder| "" | 存放 stream file 的目录，默认为进程当前工作目录 | 
+|配置         | 默认值           |                                      说明 |
+| ------------- |:-------------:|----------------------------------------:|
+|spring.cloud.stream.memory.default.worker-pool-size| -1 |           工作线程池大小，当小于 0 时使用 CPU 核心数 1 半 | 
+|spring.cloud.stream.memory.default.queue-size| 2048 |                  阻塞队列大小，当队列满了以后将丢弃最早的消息 | 
+|spring.cloud.stream.file.default.folder| "" | 存放 stream file 的目录，默认为用户目录( user.home ) | 
 
 > 所有的配置都能够在 IDEA 中智能提示
 
